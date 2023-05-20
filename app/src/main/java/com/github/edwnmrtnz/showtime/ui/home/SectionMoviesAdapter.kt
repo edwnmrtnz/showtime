@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime
+package com.github.edwnmrtnz.showtime.ui.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.github.edwnmrtnz.showtime.R
+import com.github.edwnmrtnz.showtime.core.Movie
 
 class SectionMoviesAdapter(
-    private val onClicked: (Movie) -> Unit
+    private val onClicked: (view : View, Movie) -> Unit
 ) : ListAdapter<SectionedMovie, SectionMoviesAdapter.ViewHolder>(DiffUtilCallback) {
 
     object DiffUtilCallback : DiffUtil.ItemCallback<SectionedMovie>() {
