@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="style_cardview_banner" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/shape_appearance_overlay_cardview_banner</item>
+    </style>
+    
+    <style name="shape_appearance_overlay_cardview_banner">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">42dp</item>
+        <item name="cornerSizeTopLeft">42dp</item>
+    </style>
+
+</resources>
