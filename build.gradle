@@ -1,6 +1,62 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+//buildscript {
+//    repositories {
+//        google()
+//        mavenCentral()
+//        gradlePluginPortal()
+//    }
+//
+//    dependencies {
+//        classpath(libs.android.gradle.plugin)
+//        classpath(libs.kotlin.gradle.plugin)
+//    }
+//}
+
 plugins {
-    id 'com.android.application' version '8.0.1' apply false
-    id 'com.android.library' version '8.0.1' apply false
-    id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
+    alias(libs.plugins.android.app).apply(false)
+    alias(libs.plugins.android.lib).apply(false)
+    alias(libs.plugins.kotlin.android).apply(false)
+    alias(libs.plugins.kotlin.kapt).apply(false)
+    alias(libs.plugins.dagger.hilt).apply(false)
+    alias(libs.plugins.ktlint).apply(true)
 }
+
+subprojects {
+    apply from: "../buildscripts/ktlint.gradle"
+    afterEvaluate { project ->
+        if(!project.hasProperty("android")) return
+        android {
+            compileSdk 33
+            defaultConfig {
+                minSdk 24
+                targetSdk 33
+                testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+            }
+
+            buildTypes {
+                release {
+                    minifyEnabled false
+                    proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                }
+            }
+
+            compileOptions {
+                sourceCompatibility JavaVersion.VERSION_17
+                targetCompatibility JavaVersion.VERSION_17
+            }
+
+            kotlinOptions {
+                jvmTarget = '17'
+            }
+
+            buildFeatures {
+                viewBinding = true
+                buildConfig = true
+            }
+
+            packagingOptions {
+                exclude 'META-INF/gradle/incremental.annotation.processors'
+            }
+        }
+    }
+}
+

@@ -10,6 +10,14 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/edwnmrtnz/amaterasu")
+            credentials {
+                username = "edwnmrtnz"
+                password = "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"
+            }
+        }
     }
 }
 rootProject.name = "Showtime"

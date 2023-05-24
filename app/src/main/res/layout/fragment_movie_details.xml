@@ -5,7 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.details.MovieDetailsFragment"
+    tools:context=".app.ui.details.MovieDetailsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -29,23 +29,32 @@
         android:layout_marginBottom="4dp"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/cgKeywords"
-        app:layout_constraintStart_toStartOf="@+id/cgKeywords"
+        app:layout_constraintBottom_toTopOf="@+id/hgKeywords"
+        app:layout_constraintStart_toStartOf="@+id/hgKeywords"
         tools:text="Avengers: Endgame" />
 
-    <com.google.android.material.chip.ChipGroup
-        tools:visibility="visible"
-        android:visibility="invisible"
-        android:id="@+id/cgKeywords"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <HorizontalScrollView
+        android:id="@+id/hgKeywords"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:paddingBottom="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/ivMovieBanner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivMovieBanner"/>
+        app:layout_constraintTop_toBottomOf="@id/ivMovieBanner"
+        android:scrollbars="none"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.ChipGroup
+            tools:visibility="visible"
+            android:visibility="invisible"
+            android:id="@+id/cgKeywords"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </HorizontalScrollView>
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineMaxBanner"

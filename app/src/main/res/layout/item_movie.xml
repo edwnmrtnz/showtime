@@ -10,7 +10,6 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivMovie"
         android:scaleType="centerCrop"
-        android:paddingTop="30dp"
         tools:src="@drawable/sample_item_movie"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

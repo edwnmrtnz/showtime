@@ -1,0 +1,59 @@
+[versions]
+core-ktx = "1.9.0"
+appcompat = "1.6.1"
+material = "1.9.0"
+fragment-ktx = "2.5.3"
+navigation-ui-ktx = "2.5.3"
+junit = "4.13.2"
+android-ext-junit = "1.1.5"
+espresso = "3.5.1"
+constraintlayout = "2.1.4"
+agp = "8.0.1"
+kotlin = "1.8.20"
+gson = "2.10.1"
+dagger-hilt = "2.44"
+scopey = "1.0"
+testingutils = "1.1"
+androidutils = "1.0"
+retrofit = "2.9.0"
+picasso = "2.8"
+ktlint = "11.3.1"
+
+[libraries]
+core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "fragment-ktx" }
+navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation-ui-ktx" }
+junit = { module = "junit:junit", version.ref = "junit" }
+android-ext-junit = { module = "androidx.test.ext:junit", version.ref = "android-ext-junit" }
+espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "dagger-hilt" }
+dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "dagger-hilt" }
+edwnmrtnz-scopey = { module = "net.github.amaterasu:scopey", version.ref = "scopey" }
+edwnmrtnz-testing-utils = { module = "net.github.amaterasu:testingutils", version.ref = "testingutils" }
+edwnmrtnz-android-utils = { module = "net.github.amaterasu:androidutils", version.ref = "androidutils" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
+
+[bundles]
+app = ["core-ktx", "appcompat", "material",
+    "fragment-ktx", "navigation-ui-ktx",
+    "constraintlayout", "gson", "dagger-hilt",
+    "dagger-hilt-compiler", "edwnmrtnz-scopey", "retrofit",
+    "retrofit-converter-gson", "picasso"]
+testing = ["junit", "android-ext-junit", "espresso", "edwnmrtnz-testing-utils"]
+kapt = ["dagger-hilt-compiler"]
+
+[plugins]
+android-app = { id = "com.android.application", version.ref = "agp" }
+android-lib = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger-hilt" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
