@@ -18,6 +18,7 @@ androidutils = "1.0"
 retrofit = "2.9.0"
 picasso = "2.8"
 ktlint = "11.3.1"
+detekt = "1.23.0"
 
 [libraries]
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
@@ -41,6 +42,7 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 
+
 [bundles]
 app = ["core-ktx", "appcompat", "material",
     "fragment-ktx", "navigation-ui-ktx",
@@ -57,3 +59,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger-hilt" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+detekt = {id "io.gitlab.arturbosch.detekt", version.ref = "detekt"}
