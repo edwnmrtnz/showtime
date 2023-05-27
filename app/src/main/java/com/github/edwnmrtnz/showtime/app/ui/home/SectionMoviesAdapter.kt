@@ -15,7 +15,6 @@ import com.github.edwnmrtnz.showtime.core.SectionedMovie
 
 // Saving nested recyclerview state
 // https://rubensousa.com/2019/08/27/saving_scroll_state_of_nested_recyclerviews/
-
 class SectionMoviesAdapter(
     private val scrollStateHolder: ScrollStateHolder,
     private val onClicked: (view: View, MoviePreview) -> Unit
@@ -53,37 +52,36 @@ class SectionMoviesAdapter(
 
     override fun onViewRecycled(holder: ViewHolder) {
         super.onViewRecycled(holder)
-        // holder.onRecycled()
+        holder.onRecycled()
     }
 
     class ViewHolder(
         itemView: View,
         onClicked: (view: View, MoviePreview) -> Unit,
-        val scrollStateHolder: ScrollStateHolder
+        private val scrollStateHolder: ScrollStateHolder
     ) : RecyclerView.ViewHolder(itemView), ScrollStateHolder.ScrollStateKeyProvider {
-
-        val tvSection: AppCompatTextView = itemView.findViewById(R.id.tvSection)
-        val rvMovies: RecyclerView = itemView.findViewById(R.id.rvMovies)
-        val layoutManager = LinearLayoutManager(
+        private val tvSection: AppCompatTextView = itemView.findViewById(R.id.tvSection)
+        private val rvMovies: RecyclerView = itemView.findViewById(R.id.rvMovies)
+        private val layoutManager = LinearLayoutManager(
             itemView.context,
             LinearLayoutManager.HORIZONTAL,
             false
         )
-        val adapter = HomeMoviesAdapter(onClicked)
+        private val adapter = HomeMoviesAdapter(onClicked)
         var currentItem: SectionedMovie? = null
 
         fun bind(item: SectionedMovie) {
             this.currentItem = item
             tvSection.text = item.section
             adapter.submitList(item.movies)
-            //   scrollStateHolder.restoreScrollState(rvMovies, this)
+            scrollStateHolder.restoreScrollState(rvMovies, this)
         }
 
         fun onCreated() {
             rvMovies.layoutManager = layoutManager
             rvMovies.setHasFixedSize(true)
             rvMovies.adapter = adapter
-            //  scrollStateHolder.setupRecyclerView(rvMovies, this)
+            scrollStateHolder.setupRecyclerView(rvMovies, this)
         }
 
         override fun getScrollStateKey(): String? = currentItem?.section
