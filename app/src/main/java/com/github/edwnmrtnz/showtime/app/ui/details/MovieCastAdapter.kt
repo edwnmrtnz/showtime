@@ -1,6 +1,8 @@
 package com.github.edwnmrtnz.showtime.app.ui.details
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +15,12 @@ import com.squareup.picasso.Picasso
 class MovieCastAdapter(
     private var cast: List<Movie.Cast>
 ) : RecyclerView.Adapter<MovieCastAdapter.ViewHolder>() {
+
+    private val placeholder : GradientDrawable = GradientDrawable()
+    init {
+        placeholder.shape = GradientDrawable.RECTANGLE
+        placeholder.setColor(Color.GRAY)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater
@@ -28,6 +36,7 @@ class MovieCastAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Picasso.get()
             .load(cast[position].thumbnail)
+            .placeholder(placeholder)
             .into(holder.ivCast)
     }
 

@@ -1,5 +1,7 @@
 package com.github.edwnmrtnz.showtime.app.ui.home
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,12 @@ import com.squareup.picasso.Picasso
 
 class HomeMoviesAdapter(private val onCLicked: (view: View, movie: MoviePreview) -> Unit) :
     ListAdapter<MoviePreview, HomeMoviesAdapter.ViewHolder>(DiffUtiLCallback) {
+
+    private val placeholder : GradientDrawable = GradientDrawable()
+    init {
+        placeholder.shape = GradientDrawable.RECTANGLE
+        placeholder.setColor(Color.GRAY)
+    }
 
     object DiffUtiLCallback : DiffUtil.ItemCallback<MoviePreview>() {
         override fun areItemsTheSame(oldItem: MoviePreview, newItem: MoviePreview): Boolean {
@@ -40,6 +48,7 @@ class HomeMoviesAdapter(private val onCLicked: (view: View, movie: MoviePreview)
         holder.itemView.setOnClickListener { onCLicked.invoke(holder.ivImage, item) }
         Picasso.get()
             .load(item.thumbnail)
+            .placeholder(placeholder)
             .into(holder.ivImage)
     }
 }
