@@ -13,6 +13,8 @@ import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 
@@ -26,7 +28,7 @@ class DefaultMoviesRepository @Inject constructor(
     }
 
     init {
-        Log.e(TAG, "initialized")
+        Log.e(TAG, "initialized default movies repository")
     }
 
     private val movies: SparseArray<Movie> = SparseArray()
@@ -35,11 +37,12 @@ class DefaultMoviesRepository @Inject constructor(
         return withContext(dispatcher) {
             val params = ApiQueryParamsBuilder().page(1).build()
             try {
-                val popular = api.getPopular(params).toSectionedMovies("Popular")
-                val now = api.getNowPlaying(params).toSectionedMovies("Now Playing")
-                val top = api.getTopRated(params).toSectionedMovies("Top Rated")
-                val upcoming = api.getUpcoming(params).toSectionedMovies("Upcoming")
-                listOf(popular, top, upcoming, now)
+                listOf(
+                    async { api.getPopular(params).toSectionedMovies("Popular") },
+                    async { api.getNowPlaying(params).toSectionedMovies("Now Playing") },
+                    async { api.getTopRated(params).toSectionedMovies("Top Rated") },
+                    async { api.getUpcoming(params).toSectionedMovies("Upcoming") }
+                ).awaitAll()
             } catch (exception: HttpException) {
                 throw ShowtimeException.HttpException(exception.code(), exception.message())
             } catch (exception: IOException) {
