@@ -20,6 +20,7 @@ plugins {
     alias(libs.plugins.ktlint).apply(true)
 }
 
+apply from: "buildscripts/githooks.gradle"
 subprojects {
     apply from: "../buildscripts/ktlint.gradle"
     afterEvaluate { project ->
@@ -60,3 +61,4 @@ subprojects {
     }
 }
 
+tasks.getByPath("app:preBuild").dependsOn installHooks

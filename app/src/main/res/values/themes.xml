@@ -1,9 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.Showtime" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
         <!--Prevent multi view click-->
         <item name="android:splitMotionEvents">false</item>
-        <item name="colorPrimaryDark">@color/black</item>
-
     </style>
 
     <style name="Theme.Showtime" parent="Base.Theme.Showtime"/>

@@ -1,7 +1,10 @@
-package com.github.edwnmrtnz.showtime.app.ui.home
+package com.github.edwnmrtnz.showtime
 
 import com.github.edwnmrtnz.showtime.app.helper.presenter.StatefulPresenter
 import com.github.edwnmrtnz.showtime.app.helper.presenter.TestView
+import com.github.edwnmrtnz.showtime.app.ui.home.HomeMoviesPresenter
+import com.github.edwnmrtnz.showtime.app.ui.home.HomeMoviesUiState
+import com.github.edwnmrtnz.showtime.app.ui.home.HomeMoviesView
 import com.github.edwnmrtnz.showtime.core.SectionedMovie
 import com.github.edwnmrtnz.showtime.core.ShowtimeException
 import com.github.edwnmrtnz.showtime.core.data.FakeMoviesRepository
@@ -35,7 +38,10 @@ class HomeMoviesPresenterTest {
     fun `given will fail to load, when bind, then show error`() = runBlocking {
         sut.bind(view)
 
-        Truth.assertThat(view.state().error).isInstanceOf(HomeMoviesUiState.Error.Setup::class.java)
+        Truth.assertThat(view.state().error).isTrue()
+        Truth.assertThat(view.state().dialog).isInstanceOf(
+            HomeMoviesUiState.Dialog.ErrorOnSetup::class.java
+        )
     }
 
     @Test

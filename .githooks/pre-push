@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "Executing unit test..."
+./gradlew testDebugUnitTest
+if [ $? == 1 ]; then
+  echo "Test failed."
+  exit 1
+else
+  echo "Test passed!"
+fi
+

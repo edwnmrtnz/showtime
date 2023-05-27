@@ -16,7 +16,7 @@ class MovieCastAdapter(
     private var cast: List<Movie.Cast>
 ) : RecyclerView.Adapter<MovieCastAdapter.ViewHolder>() {
 
-    private val placeholder : GradientDrawable = GradientDrawable()
+    private val placeholder: GradientDrawable = GradientDrawable()
     init {
         placeholder.shape = GradientDrawable.RECTANGLE
         placeholder.setColor(Color.GRAY)

@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso
 class HomeMoviesAdapter(private val onCLicked: (view: View, movie: MoviePreview) -> Unit) :
     ListAdapter<MoviePreview, HomeMoviesAdapter.ViewHolder>(DiffUtiLCallback) {
 
-    private val placeholder : GradientDrawable = GradientDrawable()
+    private val placeholder: GradientDrawable = GradientDrawable()
     init {
         placeholder.shape = GradientDrawable.RECTANGLE
         placeholder.setColor(Color.GRAY)

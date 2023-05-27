@@ -1,0 +1,22 @@
+task installHooks(type: Copy) {
+    def preCommitHook = new File(rootProject.rootDir, '.git/hooks/pre-commit')
+    if (!preCommitHook.exists()) {
+        from new File(rootProject.rootDir, '.githooks/pre-commit')
+        into { new File(rootProject.rootDir, '.git/hooks') }
+        fileMode 0777
+    }
+    def prePushHook = new File(rootProject.rootDir, '.git/hooks/pre-push')
+    if (!prePushHook.exists()) {
+        from new File(rootProject.rootDir, '.githooks/pre-push')
+        into { new File(rootProject.rootDir, '.git/hooks') }
+        fileMode 0777
+    }
+}
+
+task deleteHooks(type : Delete) {
+    def commit = new File(rootProject.rootDir, ".git/hooks/pre-commit")
+    commit.delete()
+    def push = new File(rootProject.rootDir, ".git/hooks/pre-push")
+    push.delete()
+}
+
