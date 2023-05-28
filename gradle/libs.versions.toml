@@ -13,12 +13,13 @@ kotlin = "1.8.20"
 gson = "2.10.1"
 dagger-hilt = "2.44"
 scopey = "1.0"
-testingutils = "1.1"
+testingutils = "1.2"
 androidutils = "1.0"
 retrofit = "2.9.0"
 picasso = "2.8"
 ktlint = "11.3.1"
 detekt = "1.23.0"
+room = "2.5.1"
 
 [libraries]
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
@@ -41,16 +42,17 @@ edwnmrtnz-android-utils = { module = "net.github.amaterasu:androidutils", versio
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
-
+room = {module = "androidx.room:room-ktx", version.ref = "room"}
+room-compiler = {module = "androidx.room:room-compiler", version.ref = "room"}
 
 [bundles]
 app = ["core-ktx", "appcompat", "material",
     "fragment-ktx", "navigation-ui-ktx",
     "constraintlayout", "gson", "dagger-hilt",
     "dagger-hilt-compiler", "edwnmrtnz-scopey", "retrofit",
-    "retrofit-converter-gson", "picasso"]
+    "retrofit-converter-gson", "picasso", "room"]
 testing = ["junit", "android-ext-junit", "espresso", "edwnmrtnz-testing-utils"]
-kapt = ["dagger-hilt-compiler"]
+kapt = ["dagger-hilt-compiler", "room-compiler"]
 
 [plugins]
 android-app = { id = "com.android.application", version.ref = "agp" }

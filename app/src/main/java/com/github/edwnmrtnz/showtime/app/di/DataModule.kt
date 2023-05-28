@@ -1,14 +1,18 @@
 package com.github.edwnmrtnz.showtime.app.di
 
+import android.content.Context
 import com.github.edwnmrtnz.showtime.core.MoviesRepository
 import com.github.edwnmrtnz.showtime.core.data.Constant
 import com.github.edwnmrtnz.showtime.core.data.DefaultMoviesRepository
-import com.github.edwnmrtnz.showtime.core.data.MoviesAPI
-import com.github.edwnmrtnz.showtime.core.data.TMDBInterceptor
+import com.github.edwnmrtnz.showtime.core.data.api.MoviesAPI
+import com.github.edwnmrtnz.showtime.core.data.api.TMDBInterceptor
+import com.github.edwnmrtnz.showtime.core.data.db.MoviesDao
+import com.github.edwnmrtnz.showtime.core.data.db.MoviesDatabase
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
@@ -42,5 +46,10 @@ abstract class DataModule {
         @Provides
         @IODispatcher
         fun provideIODispatcher() = Dispatchers.IO
+
+        @Provides
+        fun provideMoviesDao(@ApplicationContext context: Context): MoviesDao {
+            return MoviesDatabase.getInstance(context).dao()
+        }
     }
 }

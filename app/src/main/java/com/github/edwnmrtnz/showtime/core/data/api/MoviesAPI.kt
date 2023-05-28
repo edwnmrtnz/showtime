@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime.core.data
+package com.github.edwnmrtnz.showtime.core.data.api
 
 import retrofit2.http.GET
 import retrofit2.http.Path

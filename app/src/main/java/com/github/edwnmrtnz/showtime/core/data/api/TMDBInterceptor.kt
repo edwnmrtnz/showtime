@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime.core.data
+package com.github.edwnmrtnz.showtime.core.data.api
 
 import com.github.edwnmrtnz.showtime.BuildConfig
 import okhttp3.Interceptor

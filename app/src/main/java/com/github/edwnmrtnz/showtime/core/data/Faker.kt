@@ -4,7 +4,7 @@ import com.github.edwnmrtnz.showtime.core.Movie
 import com.github.edwnmrtnz.showtime.core.MoviePreview
 import com.github.edwnmrtnz.showtime.core.SectionedMovie
 
-object MovieDataSource {
+object Faker {
     val items = listOf(
         SectionedMovie("Popular", Array(20) { MoviePreview.dummy(it + 1000) }.toList()),
         SectionedMovie("Now Playing", Array(50) { MoviePreview.dummy(it + 3000) }.toList()),
