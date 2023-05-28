@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import com.github.edwnmrtnz.showtime.R
 import com.github.edwnmrtnz.showtime.app.ui.details.MovieDetailsFragment
@@ -43,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
             }
         }
-        if(supportFragmentManager.fragments.isNotEmpty()) {
+        if (supportFragmentManager.fragments.isNotEmpty()) {
             hideOrShow()
         }
         supportFragmentManager.addOnBackStackChangedListener {

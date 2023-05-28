@@ -9,8 +9,11 @@
     <include layout="@layout/item_movie_section"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:clipToPadding="false"
+        android:scrollbarStyle="outsideOverlay"
         android:id="@+id/rvMovies"
-        android:layout_marginStart="12dp"
         tools:listitem="@layout/item_movie"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

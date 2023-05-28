@@ -10,6 +10,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:paddingBottom="30dp"
         android:clipToPadding="false"
+        android:scrollbarStyle="outsideOverlay"
         android:id="@+id/rvMovies"
         tools:listitem="@layout/item_sectioned_movies"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
