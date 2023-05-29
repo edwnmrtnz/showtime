@@ -1,6 +1,5 @@
 package com.github.edwnmrtnz.showtime.core.data
 
-import android.util.Log
 import android.util.SparseArray
 import androidx.core.util.containsKey
 import com.github.edwnmrtnz.showtime.app.di.IODispatcher
@@ -40,10 +39,6 @@ class DefaultMoviesRepository @Inject constructor(
         object Upcoming : Section("Upcoming")
     }
 
-    init {
-        Log.e(TAG, "initialized default movies repository")
-    }
-
     private val movies: SparseArray<Movie> = SparseArray()
 
     override suspend fun load(): List<SectionedMovie> {
@@ -74,12 +69,12 @@ class DefaultMoviesRepository @Inject constructor(
         }
     }
 
-    private fun save(sv: List<SectionedMovie>) {
+    private suspend fun save(sv: List<SectionedMovie>) {
         sv.forEach {
             val section = it.section
             val movies = it.movies
             movies.forEach { movie ->
-                SectionedMovieDbRow(section, movie.id, movie.thumbnail)
+                dao.saveSectionedMovie(SectionedMovieDbRow(section, movie.id, movie.thumbnail))
             }
         }
     }

@@ -18,7 +18,7 @@ import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 @Config(manifest = Config.NONE, sdk = [Config.OLDEST_SDK], application = Application::class)
-class MoviesSavingAndQueryTest {
+class LoadMovieTest {
 
     private val raw = TestAssetReader.read("app", "details.json")
     private lateinit var database: MoviesDatabase

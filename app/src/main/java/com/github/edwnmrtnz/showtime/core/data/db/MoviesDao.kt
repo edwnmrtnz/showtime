@@ -35,7 +35,7 @@ interface MoviesDao {
     suspend fun saveGenres(genres: List<GenreDbRow>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveMovie(section: SectionedMovieDbRow)
+    suspend fun saveSectionedMovie(section: SectionedMovieDbRow)
 
     @Transaction
     suspend fun saveMovie(movie: MovieWithGenreAndCastDbRow) {
