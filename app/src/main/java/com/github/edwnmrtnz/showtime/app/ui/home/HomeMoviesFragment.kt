@@ -157,8 +157,4 @@ class HomeMoviesFragment : Fragment(), HomeMoviesView {
         super.onDestroyView()
         _binding = null
     }
-
-    companion object {
-        private const val TAG = "HomeMoviesFragment"
-    }
 }

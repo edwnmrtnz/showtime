@@ -101,7 +101,7 @@ class MovieDetailsFragment : Fragment(), MovieDetailsView {
         movieCastAdapter.submitList(movie.cast)
 
         lifecycleScope.launch {
-            delay(100)
+            delay(FAKE_DELAY)
             showHiddenViews()
         }
     }
@@ -118,9 +118,9 @@ class MovieDetailsFragment : Fragment(), MovieDetailsView {
     }
 
     companion object {
-        private const val TAG = "MovieDetailsFragment"
         private const val KEY_MOVIE_ID = "key_movie_id"
         private const val KEY_THUMBNAIL = "key_thumbnail"
+        private const val FAKE_DELAY = 100L
         fun newInstance(movieId: Int, thumbnail: String): MovieDetailsFragment {
             return MovieDetailsFragment().apply {
                 val bundle = Bundle().apply {

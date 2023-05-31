@@ -18,11 +18,15 @@ plugins {
     alias(libs.plugins.kotlin.kapt).apply(false)
     alias(libs.plugins.dagger.hilt).apply(false)
     alias(libs.plugins.ktlint).apply(true)
+    alias(libs.plugins.detekt).apply(true)
 }
 
 apply from: "buildscripts/githooks.gradle"
+
 subprojects {
     apply from: "../buildscripts/ktlint.gradle"
+    apply from: "../buildscripts/detekt.gradle"
+
     afterEvaluate { project ->
         if(!project.hasProperty("android")) return
         android {

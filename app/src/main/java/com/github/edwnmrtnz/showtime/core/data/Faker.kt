@@ -1,3 +1,5 @@
+@file:SuppressWarnings("MagicNumber")
+
 package com.github.edwnmrtnz.showtime.core.data
 
 import com.github.edwnmrtnz.showtime.core.Movie

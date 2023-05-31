@@ -28,10 +28,6 @@ class DefaultMoviesRepository @Inject constructor(
     private val dao: MoviesDao
 ) : MoviesRepository {
 
-    companion object {
-        private const val TAG = "DefaultMoviesRepository"
-    }
-
     private sealed class Section(val name: String) {
         object Popular : Section("Popular")
         object NowPlaying : Section("Now PLaying")
@@ -62,8 +58,14 @@ class DefaultMoviesRepository @Inject constructor(
                     async { api.getUpcoming(params).toSectionedMovies(Section.Upcoming.name) }
                 ).awaitAll().also { sv -> save(sv) }
             } catch (exception: HttpException) {
-                throw ShowtimeException.HttpException(exception.code(), exception.message())
+                exception.printStackTrace()
+                throw ShowtimeException.HttpException(
+                    code = exception.code(),
+                    message = exception.message(),
+                    exception = exception
+                )
             } catch (exception: IOException) {
+                exception.printStackTrace()
                 throw ShowtimeException.IOException(exception)
             }
         }
@@ -89,7 +91,11 @@ class DefaultMoviesRepository @Inject constructor(
                 dao.saveMovie(raw.toDb())
                 raw.toMovie().also { movie -> movies.put(movie.id, movie) }
             } catch (exception: HttpException) {
-                throw ShowtimeException.HttpException(exception.code(), exception.message())
+                throw ShowtimeException.HttpException(
+                    exception.code(),
+                    exception.message(),
+                    exception
+                )
             } catch (exception: IOException) {
                 throw ShowtimeException.IOException(exception)
             }

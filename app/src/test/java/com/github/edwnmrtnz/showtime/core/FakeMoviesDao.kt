@@ -6,7 +6,6 @@ import com.github.edwnmrtnz.showtime.core.data.db.MovieDbRow
 import com.github.edwnmrtnz.showtime.core.data.db.MovieWithGenreAndCastDbRow
 import com.github.edwnmrtnz.showtime.core.data.db.MoviesDao
 import com.github.edwnmrtnz.showtime.core.data.db.SectionedMovieDbRow
-import java.lang.IllegalStateException
 
 class FakeMoviesDao : MoviesDao {
     private val movies: HashMap<Int, MovieWithGenreAndCastDbRow> = hashMapOf()
@@ -34,15 +33,15 @@ class FakeMoviesDao : MoviesDao {
     }
 
     override suspend fun saveMovie(movie: MovieDbRow) {
-        throw IllegalStateException()
+        error("favor saveMovie")
     }
 
     override suspend fun saveCasts(cast: List<CastDbRow>) {
-        throw IllegalStateException()
+        error("favor saveMovie")
     }
 
     override suspend fun saveGenres(genres: List<GenreDbRow>) {
-        throw IllegalStateException()
+        error("favor saveMovie")
     }
 
     override suspend fun saveMovie(movie: MovieWithGenreAndCastDbRow) {

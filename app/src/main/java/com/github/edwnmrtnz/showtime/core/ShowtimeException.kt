@@ -8,7 +8,8 @@ sealed class ShowtimeException(override val message: String) : Exception(message
 
     class HttpException(
         val code: Int,
-        message: String
+        message: String,
+        val exception: Exception
     ) : ShowtimeException(message)
 
     class DomainException(message: String) : ShowtimeException(message)
