@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime
+package com.github.edwnmrtnz.showtime.core
 
 import com.github.edwnmrtnz.showtime.core.data.db.CastDbRow
 import com.github.edwnmrtnz.showtime.core.data.db.GenreDbRow

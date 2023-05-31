@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime
+package com.github.edwnmrtnz.showtime.app
 
 import com.github.edwnmrtnz.showtime.app.helper.presenter.StatefulPresenter
 import com.github.edwnmrtnz.showtime.app.helper.presenter.TestView

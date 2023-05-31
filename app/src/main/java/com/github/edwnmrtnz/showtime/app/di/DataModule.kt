@@ -49,7 +49,7 @@ abstract class DataModule {
 
         @Provides
         fun provideMoviesDao(@ApplicationContext context: Context): MoviesDao {
-            return MoviesDatabase.getInstance(context).dao()
+            return MoviesDatabase.getInstance(context).moviesDao()
         }
     }
 }

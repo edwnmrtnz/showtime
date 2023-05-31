@@ -6,12 +6,18 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [MovieDbRow::class, GenreDbRow::class, CastDbRow::class, SectionedMovieDbRow::class],
+    entities = [
+        MovieDbRow::class,
+        GenreDbRow::class,
+        CastDbRow::class,
+        SectionedMovieDbRow::class
+    ],
     version = 2,
     exportSchema = false
 )
 abstract class MoviesDatabase : RoomDatabase() {
-    abstract fun dao(): MoviesDao
+
+    abstract fun moviesDao(): MoviesDao
 
     companion object {
         @Volatile
