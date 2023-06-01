@@ -56,7 +56,7 @@ class ScrollStateHolder(savedInstanceState: Bundle? = null) {
     init {
         savedInstanceState?.getBundle(STATE_BUNDLE)?.let { bundle ->
             bundle.keySet().forEach { key ->
-                bundle.getParcelable<Parcelable>(key)?.let {
+                bundle.parcelable<Parcelable>(key)?.let {
                     scrollStates[key] = it
                 }
             }
