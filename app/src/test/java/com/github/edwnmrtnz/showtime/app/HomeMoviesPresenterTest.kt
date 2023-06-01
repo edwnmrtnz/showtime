@@ -19,7 +19,8 @@ class HomeMoviesPresenterTest {
 
     class FailingMoviesRepository : FakeMoviesRepository() {
         override suspend fun load(): List<SectionedMovie> {
-            throw ShowtimeException.HttpException(404, "Something went wrong")
+            throw ShowtimeException
+                .HttpException(404, "error", Exception("error"))
         }
     }
 

@@ -20,14 +20,28 @@ android {
         versionCode 1
         versionName "1.0"
         buildConfigField("String", "TMDB_TOKEN", lp.getProperty("tmdb"))
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunnerArguments clearPackageData: 'true'
+    }
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
     }
 }
 
 dependencies {
     implementation(libs.bundles.app)
-    testImplementation(libs.bundles.testing)
-    androidTestImplementation(libs.bundles.testing)
     kapt(libs.bundles.kapt)
+
+    // Local test
+    testImplementation(libs.bundles.testing.local)
+
+    // Instrumented test
+    androidTestImplementation(libs.bundles.testing.instrumented)
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.5.1"
+    androidTestUtil 'androidx.test:orchestrator:1.4.2'
+    implementation "androidx.test.espresso:espresso-idling-resource:3.5.1"
+
 }
 
 // Allow references to generated code

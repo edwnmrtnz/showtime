@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.github.amaterasu.scopey.scopey
 import com.github.edwnmrtnz.showtime.R
+import com.github.edwnmrtnz.showtime.app.helper.EspressoIdlingResource
 import com.github.edwnmrtnz.showtime.app.helper.ScrollStateHolder
 import com.github.edwnmrtnz.showtime.app.helper.ignore
 import com.github.edwnmrtnz.showtime.app.ui.details.MovieDetailsFragment
@@ -67,13 +68,13 @@ class HomeMoviesFragment : Fragment(), HomeMoviesView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.rvMovies.layoutManager = LinearLayoutManager(
+        binding.rvSectionedMovies.layoutManager = LinearLayoutManager(
             requireContext(),
             VERTICAL,
             false
         )
-        binding.rvMovies.setHasFixedSize(true)
-        binding.rvMovies.adapter = adapter
+        binding.rvSectionedMovies.setHasFixedSize(true)
+        binding.rvSectionedMovies.adapter = adapter
 
         postponeEnterTransition()
         (view.parent as? ViewGroup)?.doOnPreDraw { startPostponedEnterTransition() }
@@ -81,6 +82,7 @@ class HomeMoviesFragment : Fragment(), HomeMoviesView {
 
     override fun onStart() {
         super.onStart()
+        EspressoIdlingResource.increment()
         presenter.bind(this)
     }
 
@@ -99,7 +101,11 @@ class HomeMoviesFragment : Fragment(), HomeMoviesView {
             handleDialogs(state.dialog)
         }
 
-        adapter.submitList(state.movies)
+        adapter.submitList(state.movies) {
+            if (state.movies.isNotEmpty()) {
+                EspressoIdlingResource.decrement()
+            }
+        }
     }
 
     private fun handleNavigation(navigation: HomeMoviesUiState.Navigate) {

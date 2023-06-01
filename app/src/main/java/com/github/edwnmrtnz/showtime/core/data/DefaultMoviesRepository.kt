@@ -3,9 +3,10 @@ package com.github.edwnmrtnz.showtime.core.data
 import android.util.SparseArray
 import androidx.core.util.containsKey
 import com.github.edwnmrtnz.showtime.app.di.IODispatcher
-import com.github.edwnmrtnz.showtime.app.helper.ApiQueryParamsBuilder
+import com.github.edwnmrtnz.showtime.core.ApiQueryParamsBuilder
 import com.github.edwnmrtnz.showtime.core.Movie
 import com.github.edwnmrtnz.showtime.core.MoviePreview
+import com.github.edwnmrtnz.showtime.core.MovieSection
 import com.github.edwnmrtnz.showtime.core.MoviesRepository
 import com.github.edwnmrtnz.showtime.core.SectionedMovie
 import com.github.edwnmrtnz.showtime.core.ShowtimeException
@@ -28,13 +29,6 @@ class DefaultMoviesRepository @Inject constructor(
     private val dao: MoviesDao
 ) : MoviesRepository {
 
-    private sealed class Section(val name: String) {
-        object Popular : Section("Popular")
-        object NowPlaying : Section("Now PLaying")
-        object TopRated : Section("Top Rated")
-        object Upcoming : Section("Upcoming")
-    }
-
     private val movies: SparseArray<Movie> = SparseArray()
 
     override suspend fun load(): List<SectionedMovie> {
@@ -52,10 +46,14 @@ class DefaultMoviesRepository @Inject constructor(
             val params = ApiQueryParamsBuilder().page(1).build()
             try {
                 listOf(
-                    async { api.getPopular(params).toSectionedMovies(Section.Popular.name) },
-                    async { api.getNowPlaying(params).toSectionedMovies(Section.NowPlaying.name) },
-                    async { api.getTopRated(params).toSectionedMovies(Section.TopRated.name) },
-                    async { api.getUpcoming(params).toSectionedMovies(Section.Upcoming.name) }
+                    async { api.getPopular(params).toSectionedMovies(MovieSection.Popular.name) },
+                    async {
+                        api.getNowPlaying(params).toSectionedMovies(
+                            MovieSection.NowPlaying.name
+                        )
+                    },
+                    async { api.getTopRated(params).toSectionedMovies(MovieSection.TopRated.name) },
+                    async { api.getUpcoming(params).toSectionedMovies(MovieSection.Upcoming.name) }
                 ).awaitAll().also { sv -> save(sv) }
             } catch (exception: HttpException) {
                 exception.printStackTrace()

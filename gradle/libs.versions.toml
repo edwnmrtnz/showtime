@@ -13,8 +13,9 @@ kotlin = "1.8.20"
 gson = "2.10.1"
 dagger-hilt = "2.44"
 scopey = "1.0"
-testingutils = "1.2"
 androidutils = "1.0"
+testing-local = "1.1"
+testing-instrumented = "1.1"
 retrofit = "2.9.0"
 picasso = "2.8"
 ktlint = "11.3.1"
@@ -37,7 +38,8 @@ gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "dagger-hilt" }
 dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "dagger-hilt" }
 edwnmrtnz-scopey = { module = "net.github.amaterasu:scopey", version.ref = "scopey" }
-edwnmrtnz-testing-utils = { module = "net.github.amaterasu:testingutils", version.ref = "testingutils" }
+edwnmrtnz-testing-local = { module = "net.github.amaterasu:localtest", version.ref = "testing-local" }
+edwnmrtnz-testing-instrumented = { module = "net.github.amaterasu:instrumentedtest", version.ref = "testing-instrumented" }
 edwnmrtnz-android-utils = { module = "net.github.amaterasu:androidutils", version.ref = "androidutils" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
@@ -51,7 +53,8 @@ app = ["core-ktx", "appcompat", "material",
     "constraintlayout", "gson", "dagger-hilt",
     "dagger-hilt-compiler", "edwnmrtnz-scopey", "retrofit",
     "retrofit-converter-gson", "picasso", "room"]
-testing = ["junit", "android-ext-junit", "espresso", "edwnmrtnz-testing-utils"]
+testing-local = ["junit", "android-ext-junit", "espresso", "edwnmrtnz-testing-local"]
+testing-instrumented = ["edwnmrtnz-testing-instrumented"]
 kapt = ["dagger-hilt-compiler", "room-compiler"]
 
 [plugins]
