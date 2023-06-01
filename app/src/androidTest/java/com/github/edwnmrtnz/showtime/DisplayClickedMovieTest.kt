@@ -9,7 +9,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class DisplaySectionedMoviesTest {
+class DisplayClickedMovieTest {
 
     @get:Rule
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
@@ -18,12 +18,14 @@ class DisplaySectionedMoviesTest {
     val espressoIdlingResourceTestRule = EspressoIdlingResourceTestRule()
 
     @Test
-    fun shouldHaveAllTheMovieSections() {
+    fun shouldDisplayTheCLickedMovie() {
         ShowtimeAppRobot()
             .launch()
-            .hasThePopularSection()
-            .hasTheNowPlayingSection()
-            .hasTheTopRatedSection()
-            .hasTheUpcomingSection()
+            .clickFirstMovie()
+            .shouldHaveThePhoto()
+            .shouldHaveTheTitle()
+            .shouldHaveTheGenres()
+            .shouldHaveTheOverview()
+            .shouldHaveTheCast()
     }
 }
