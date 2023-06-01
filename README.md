@@ -18,5 +18,4 @@ View-based Movie App with TMDB API.
 2. Try out different presentation architecture pattern.
 3. Experiment with boundaries type mapping.
 4. Create sample test implementation exercising Robot Pattern for E2E Test using Espresso, Snapshot Test, MockWebServer, and Robolectric.
-5. 
 

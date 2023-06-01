@@ -12,11 +12,11 @@ task installHooks(type: Copy) {
         fileMode 0777
     }
 }
-
-task deleteHooks(type : Delete) {
-    def commit = new File(rootProject.rootDir, ".git/hooks/pre-commit")
-    commit.delete()
-    def push = new File(rootProject.rootDir, ".git/hooks/pre-push")
-    push.delete()
-}
-
+//
+//task deleteHooks(type : Delete) {
+//    def commit = new File(rootProject.rootDir, ".git/hooks/pre-commit")
+//    commit.delete()
+//    def push = new File(rootProject.rootDir, ".git/hooks/pre-push")
+//    push.delete()
+//}
+//

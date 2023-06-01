@@ -3,6 +3,7 @@ package com.github.edwnmrtnz.showtime
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.github.edwnmrtnz.showtime.app.MainActivity
+import com.github.edwnmrtnz.showtime.robots.HomeMoviesRobot
 import com.github.edwnmrtnz.showtime.rules.EspressoIdlingResourceTestRule
 import org.junit.Rule
 import org.junit.Test
@@ -19,8 +20,7 @@ class DisplaySectionedMoviesTest {
 
     @Test
     fun shouldHaveAllTheMovieSections() {
-        ShowtimeAppRobot()
-            .launch()
+        HomeMoviesRobot()
             .hasThePopularSection()
             .hasTheNowPlayingSection()
             .hasTheTopRatedSection()
