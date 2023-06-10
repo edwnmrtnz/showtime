@@ -1,13 +1,13 @@
 package com.github.edwnmrtnz.showtime.app
 
-import com.github.edwnmrtnz.showtime.app.helper.presenter.StatefulPresenter
-import com.github.edwnmrtnz.showtime.app.helper.presenter.TestView
-import com.github.edwnmrtnz.showtime.app.ui.home.HomeMoviesPresenter
-import com.github.edwnmrtnz.showtime.app.ui.home.HomeMoviesUiState
-import com.github.edwnmrtnz.showtime.app.ui.home.HomeMoviesView
 import com.github.edwnmrtnz.showtime.core.SectionedMovie
 import com.github.edwnmrtnz.showtime.core.ShowtimeException
 import com.github.edwnmrtnz.showtime.core.data.FakeMoviesRepository
+import com.github.edwnmrtnz.showtime.ui.helpers.presenter.StatefulPresenter
+import com.github.edwnmrtnz.showtime.ui.helpers.presenter.TestView
+import com.github.edwnmrtnz.showtime.ui.home.HomeMoviesPresenter
+import com.github.edwnmrtnz.showtime.ui.home.HomeMoviesUiState
+import com.github.edwnmrtnz.showtime.ui.home.HomeMoviesView
 import com.google.common.truth.Truth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

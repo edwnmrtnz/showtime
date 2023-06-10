@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime.app.ui.home
+package com.github.edwnmrtnz.showtime.ui.home
 
 import com.github.edwnmrtnz.showtime.core.MoviePreview
 import com.github.edwnmrtnz.showtime.core.SectionedMovie

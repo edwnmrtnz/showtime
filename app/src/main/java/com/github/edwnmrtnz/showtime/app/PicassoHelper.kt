@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime.app.helper
+package com.github.edwnmrtnz.showtime.app
 
 import android.content.Context
 import android.util.Log
@@ -11,6 +11,7 @@ object PicassoHelper {
             .listener { _, uri, exception ->
                 Log.e("Picasso", "Failed to load $uri because $exception")
             }
+            .loggingEnabled(BuildConfig.DEBUG)
             .indicatorsEnabled(BuildConfig.DEBUG)
             .build()
         Picasso.setSingletonInstance(picasso)

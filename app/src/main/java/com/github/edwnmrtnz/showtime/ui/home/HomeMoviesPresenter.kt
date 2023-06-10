@@ -1,9 +1,9 @@
-package com.github.edwnmrtnz.showtime.app.ui.home
+package com.github.edwnmrtnz.showtime.ui.home
 
-import com.github.edwnmrtnz.showtime.app.helper.presenter.StatefulPresenter
 import com.github.edwnmrtnz.showtime.core.MoviePreview
 import com.github.edwnmrtnz.showtime.core.MoviesRepository
 import com.github.edwnmrtnz.showtime.core.ShowtimeException
+import com.github.edwnmrtnz.showtime.ui.helpers.presenter.StatefulPresenter
 import javax.inject.Inject
 import kotlinx.coroutines.launch
 

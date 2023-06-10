@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime.core
+package com.github.edwnmrtnz.showtime.core.data
 
 class ApiQueryParamsBuilder {
     private val query: HashMap<String, String> = hashMapOf(

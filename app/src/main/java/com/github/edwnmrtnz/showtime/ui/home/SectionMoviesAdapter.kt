@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime.app.ui.home
+package com.github.edwnmrtnz.showtime.ui.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.edwnmrtnz.showtime.R
-import com.github.edwnmrtnz.showtime.app.helper.ScrollStateHolder
 import com.github.edwnmrtnz.showtime.core.MoviePreview
 import com.github.edwnmrtnz.showtime.core.SectionedMovie
+import com.github.edwnmrtnz.showtime.ui.helpers.ScrollStateHolder
 
 // Saving nested recyclerview state
 // https://rubensousa.com/2019/08/27/saving_scroll_state_of_nested_recyclerviews/

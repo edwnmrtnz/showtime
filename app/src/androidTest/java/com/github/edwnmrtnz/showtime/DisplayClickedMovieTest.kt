@@ -2,10 +2,10 @@ package com.github.edwnmrtnz.showtime
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.github.edwnmrtnz.showtime.app.MainActivity
 import com.github.edwnmrtnz.showtime.robots.HomeMoviesRobot
 import com.github.edwnmrtnz.showtime.robots.MovieDetailsRobot
 import com.github.edwnmrtnz.showtime.rules.EspressoIdlingResourceTestRule
+import com.github.edwnmrtnz.showtime.ui.MainActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

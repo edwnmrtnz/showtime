@@ -1,7 +1,6 @@
 package com.github.edwnmrtnz.showtime.app
 
 import android.app.Application
-import com.github.edwnmrtnz.showtime.app.helper.PicassoHelper
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp

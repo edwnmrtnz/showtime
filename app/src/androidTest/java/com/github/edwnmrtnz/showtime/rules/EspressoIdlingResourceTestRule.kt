@@ -1,7 +1,7 @@
 package com.github.edwnmrtnz.showtime.rules
 
 import androidx.test.espresso.IdlingRegistry
-import com.github.edwnmrtnz.showtime.app.helper.EspressoIdlingResource
+import com.github.edwnmrtnz.showtime.ui.helpers.EspressoIdlingResource
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 

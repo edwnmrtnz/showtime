@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime.app.helper
+package com.github.edwnmrtnz.showtime.ui.helpers
 
 import androidx.test.espresso.idling.CountingIdlingResource
 

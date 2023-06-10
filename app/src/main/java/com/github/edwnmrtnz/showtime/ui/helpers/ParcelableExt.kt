@@ -1,6 +1,6 @@
 @file:Suppress("MagicNumber")
 
-package com.github.edwnmrtnz.showtime.app.helper
+package com.github.edwnmrtnz.showtime.ui.helpers
 
 import android.content.Intent
 import android.os.Build.VERSION.SDK_INT

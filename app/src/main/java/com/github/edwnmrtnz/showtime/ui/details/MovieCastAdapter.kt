@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime.app.ui.details
+package com.github.edwnmrtnz.showtime.ui.details
 
 import android.annotation.SuppressLint
 import android.graphics.Color

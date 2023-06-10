@@ -3,7 +3,6 @@ package com.github.edwnmrtnz.showtime.core.data
 import android.util.SparseArray
 import androidx.core.util.containsKey
 import com.github.edwnmrtnz.showtime.app.di.IODispatcher
-import com.github.edwnmrtnz.showtime.core.ApiQueryParamsBuilder
 import com.github.edwnmrtnz.showtime.core.Movie
 import com.github.edwnmrtnz.showtime.core.MoviePreview
 import com.github.edwnmrtnz.showtime.core.MovieSection

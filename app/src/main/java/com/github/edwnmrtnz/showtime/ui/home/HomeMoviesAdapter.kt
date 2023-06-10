@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime.app.ui.home
+package com.github.edwnmrtnz.showtime.ui.home
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable

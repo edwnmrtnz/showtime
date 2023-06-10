@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime.app.ui.home
+package com.github.edwnmrtnz.showtime.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.github.amaterasu.scopey.scopey
 import com.github.edwnmrtnz.showtime.R
-import com.github.edwnmrtnz.showtime.app.helper.EspressoIdlingResource
-import com.github.edwnmrtnz.showtime.app.helper.ScrollStateHolder
-import com.github.edwnmrtnz.showtime.app.helper.ignore
-import com.github.edwnmrtnz.showtime.app.ui.details.MovieDetailsFragment
 import com.github.edwnmrtnz.showtime.core.MoviePreview
 import com.github.edwnmrtnz.showtime.databinding.FragmentMovielistBinding
+import com.github.edwnmrtnz.showtime.ui.details.MovieDetailsFragment
+import com.github.edwnmrtnz.showtime.ui.helpers.EspressoIdlingResource
+import com.github.edwnmrtnz.showtime.ui.helpers.ScrollStateHolder
+import com.github.edwnmrtnz.showtime.ui.helpers.ignore
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

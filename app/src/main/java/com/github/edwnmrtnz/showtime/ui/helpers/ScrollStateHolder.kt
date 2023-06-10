@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime.app.helper
+package com.github.edwnmrtnz.showtime.ui.helpers
 
 /*
  * Copyright 2019 Rúben Sousa

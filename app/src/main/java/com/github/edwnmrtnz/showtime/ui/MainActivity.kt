@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime.app
+package com.github.edwnmrtnz.showtime.ui
 
 import android.os.Bundle
 import android.view.WindowManager
@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.commit
 import com.github.edwnmrtnz.showtime.R
-import com.github.edwnmrtnz.showtime.app.ui.details.MovieDetailsFragment
-import com.github.edwnmrtnz.showtime.app.ui.home.HomeMoviesFragment
 import com.github.edwnmrtnz.showtime.databinding.ActivityMainBinding
+import com.github.edwnmrtnz.showtime.ui.details.MovieDetailsFragment
+import com.github.edwnmrtnz.showtime.ui.home.HomeMoviesFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

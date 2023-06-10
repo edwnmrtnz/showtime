@@ -1,4 +1,4 @@
-package com.github.edwnmrtnz.showtime.app.helper.presenter
+package com.github.edwnmrtnz.showtime.ui.helpers.presenter
 
 import java.util.LinkedList
 

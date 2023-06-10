@@ -16,6 +16,7 @@ scopey = "1.0"
 androidutils = "1.0"
 testing-local = "1.1"
 testing-instrumented = "1.1"
+argshandle = "1.0"
 retrofit = "2.9.0"
 picasso = "2.8"
 ktlint = "11.3.1"
@@ -37,15 +38,19 @@ kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "dagger-hilt" }
 dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "dagger-hilt" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
+room = { module = "androidx.room:room-ktx", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+
 edwnmrtnz-scopey = { module = "net.github.amaterasu:scopey", version.ref = "scopey" }
 edwnmrtnz-testing-local = { module = "net.github.amaterasu:localtest", version.ref = "testing-local" }
 edwnmrtnz-testing-instrumented = { module = "net.github.amaterasu:instrumentedtest", version.ref = "testing-instrumented" }
 edwnmrtnz-android-utils = { module = "net.github.amaterasu:androidutils", version.ref = "androidutils" }
-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
-picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
-room = {module = "androidx.room:room-ktx", version.ref = "room"}
-room-compiler = {module = "androidx.room:room-compiler", version.ref = "room"}
+edwnmrtnz-argshandle = { module = "net.github.amaterasu:argshandle", version.ref = "argshandle" }
+
+
 
 [bundles]
 app = ["core-ktx", "appcompat", "material",
@@ -64,4 +69,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger-hilt" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
-detekt = {id =  "io.gitlab.arturbosch.detekt", version.ref = "detekt"}
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
