@@ -28,23 +28,22 @@ class MovieDetailsFragment : Fragment(), MovieDetailsView {
     private var _binding: FragmentMovieDetailsBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var provider: Provider<MovieDetailsPresenter>
-
-    private val presenter by scopey {
-        provider.get()
-    }
-    private val movieCastAdapter = MovieCastAdapter(mutableListOf())
-
     private var movieId: Int by argument()
     private var movieThumbnail: String by argument()
+
+    @Inject
+    lateinit var provider: Provider<MovieDetailsPresenter.Factory>
+
+    private val presenter by scopey {
+        provider.get().create(movieId)
+    }
+    private val movieCastAdapter = MovieCastAdapter(mutableListOf())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = TransitionInflater
             .from(requireContext())
             .inflateTransition(R.transition.shared_image)
-        presenter.set(movieId)
     }
 
     override fun onCreateView(
