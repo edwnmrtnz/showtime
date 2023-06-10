@@ -39,9 +39,9 @@ class HomeMoviesPresenterTest {
     fun `given will fail to load, when bind, then show error`() = runBlocking {
         sut.bind(view)
 
-        Truth.assertThat(view.state().error).isTrue()
-        Truth.assertThat(view.state().dialog).isInstanceOf(
-            HomeMoviesUiState.Dialog.ErrorOnSetup::class.java
+        Truth.assertThat(view.state().error).isNotNull()
+        Truth.assertThat(view.state().error).isInstanceOf(
+            HomeMoviesUiState.Error.ErrorOnSetup::class.java
         )
     }
 
@@ -49,6 +49,6 @@ class HomeMoviesPresenterTest {
     fun `given will fail to load, when bind, then no loading`() = runBlocking {
         sut.bind(view)
 
-        Truth.assertThat(view.state().isLoading).isFalse()
+        Truth.assertThat(view.state().isTryingToSetup).isFalse()
     }
 }

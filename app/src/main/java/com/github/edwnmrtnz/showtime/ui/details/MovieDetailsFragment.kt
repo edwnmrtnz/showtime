@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.github.amaterasu.argshandle.argument
 import com.github.amaterasu.scopey.scopey
 import com.github.edwnmrtnz.showtime.R
 import com.github.edwnmrtnz.showtime.databinding.FragmentMovieDetailsBinding
@@ -35,12 +36,15 @@ class MovieDetailsFragment : Fragment(), MovieDetailsView {
     }
     private val movieCastAdapter = MovieCastAdapter(mutableListOf())
 
+    private var movieId: Int by argument()
+    private var movieThumbnail: String by argument()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = TransitionInflater
             .from(requireContext())
             .inflateTransition(R.transition.shared_image)
-        presenter.set(requireArguments().getInt(KEY_MOVIE_ID))
+        presenter.set(movieId)
     }
 
     override fun onCreateView(
@@ -61,7 +65,7 @@ class MovieDetailsFragment : Fragment(), MovieDetailsView {
 
         Picasso
             .get()
-            .load(requireArguments().getString(KEY_THUMBNAIL))
+            .load(movieThumbnail)
             .networkPolicy(NetworkPolicy.OFFLINE)
             .into(binding.ivMovieBanner)
 
@@ -118,16 +122,11 @@ class MovieDetailsFragment : Fragment(), MovieDetailsView {
     }
 
     companion object {
-        private const val KEY_MOVIE_ID = "key_movie_id"
-        private const val KEY_THUMBNAIL = "key_thumbnail"
         private const val FAKE_DELAY = 100L
         fun newInstance(movieId: Int, thumbnail: String): MovieDetailsFragment {
             return MovieDetailsFragment().apply {
-                val bundle = Bundle().apply {
-                    putInt(KEY_MOVIE_ID, movieId)
-                    putString(KEY_THUMBNAIL, thumbnail)
-                }
-                arguments = bundle
+                this.movieId = movieId
+                this.movieThumbnail = thumbnail
             }
         }
     }

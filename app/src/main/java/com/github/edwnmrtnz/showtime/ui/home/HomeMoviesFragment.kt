@@ -16,7 +16,6 @@ import com.github.edwnmrtnz.showtime.databinding.FragmentMovielistBinding
 import com.github.edwnmrtnz.showtime.ui.details.MovieDetailsFragment
 import com.github.edwnmrtnz.showtime.ui.helpers.EspressoIdlingResource
 import com.github.edwnmrtnz.showtime.ui.helpers.ScrollStateHolder
-import com.github.edwnmrtnz.showtime.ui.helpers.ignore
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -97,15 +96,36 @@ class HomeMoviesFragment : Fragment(), HomeMoviesView {
             return
         }
 
-        if (state.dialog != null) {
-            handleDialogs(state.dialog)
-        }
+        handleErrors(state.error)
 
         adapter.submitList(state.movies) {
-            if (state.movies.isNotEmpty()) {
-                EspressoIdlingResource.decrement()
+            if (!state.isTryingToSetup) EspressoIdlingResource.decrement()
+        }
+    }
+
+    private fun handleErrors(error: HomeMoviesUiState.Error?) {
+        if (error == null) return
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setCancelable(false)
+            .setTitle("Oops")
+        when (error) {
+            is HomeMoviesUiState.Error.ErrorOnOpeningMovie -> {
+                dialog.setMessage(error.message)
+                    .setPositiveButton("Retry") { _, _ ->
+                        presenter.onRetryOpeningMovie(error.movie)
+                    }.setNegativeButton("No", null)
+            }
+            is HomeMoviesUiState.Error.ErrorOnSetup -> {
+                dialog.setMessage(error.message)
+                    .setPositiveButton("No") { _, _ ->
+                        presenter.onRetryLoading()
+                    }.setNegativeButton("No") { _, _ ->
+                        requireActivity().finishAffinity()
+                    }
             }
         }
+        dialog.show()
+        presenter.onErrorHandled()
     }
 
     private fun handleNavigation(navigation: HomeMoviesUiState.Navigate) {
@@ -127,36 +147,6 @@ class HomeMoviesFragment : Fragment(), HomeMoviesView {
             }
         }
         presenter.onNavigationHandled()
-    }
-
-    private fun handleDialogs(dialog: HomeMoviesUiState.Dialog) {
-        val message = when (dialog) {
-            is HomeMoviesUiState.Dialog.ErrorOnOpeningMovie -> dialog.message
-            is HomeMoviesUiState.Dialog.ErrorOnSetup -> dialog.message
-        }
-
-        MaterialAlertDialogBuilder(requireContext())
-            .setCancelable(false)
-            .setTitle("Oops")
-            .setMessage(message)
-            .setPositiveButton("Retry") { _, _ ->
-                when (dialog) {
-                    is HomeMoviesUiState.Dialog.ErrorOnOpeningMovie -> {
-                        presenter.onRetryOpeningMovie(dialog.movie)
-                    }
-
-                    is HomeMoviesUiState.Dialog.ErrorOnSetup -> {
-                        presenter.onRetryLoading()
-                    }
-                }
-            }
-            .setNegativeButton("No") { _, _ ->
-                when (dialog) {
-                    is HomeMoviesUiState.Dialog.ErrorOnOpeningMovie -> ignore()
-                    is HomeMoviesUiState.Dialog.ErrorOnSetup -> requireActivity().finishAffinity()
-                }
-            }.show()
-        presenter.onDialogDisplayed()
     }
 
     override fun onDestroyView() {

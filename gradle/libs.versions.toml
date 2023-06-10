@@ -57,7 +57,9 @@ app = ["core-ktx", "appcompat", "material",
     "fragment-ktx", "navigation-ui-ktx",
     "constraintlayout", "gson", "dagger-hilt",
     "dagger-hilt-compiler", "edwnmrtnz-scopey", "retrofit",
-    "retrofit-converter-gson", "picasso", "room"]
+    "retrofit-converter-gson", "picasso", "room",
+    "edwnmrtnz-argshandle"
+]
 testing-local = ["junit", "android-ext-junit", "espresso", "edwnmrtnz-testing-local"]
 testing-instrumented = ["edwnmrtnz-testing-instrumented"]
 kapt = ["dagger-hilt-compiler", "room-compiler"]

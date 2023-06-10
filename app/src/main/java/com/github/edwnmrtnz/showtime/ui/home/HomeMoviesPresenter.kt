@@ -24,17 +24,14 @@ class HomeMoviesPresenter @Inject constructor(
                 render { state ->
                     state.copy(
                         movies = movies,
-                        isLoading = false,
-                        dialog = null,
-                        error = false
+                        isTryingToSetup = false
                     )
                 }
             } catch (exception: ShowtimeException) {
                 render { state ->
                     state.copy(
-                        isLoading = false,
-                        error = true,
-                        dialog = HomeMoviesUiState.Dialog.ErrorOnSetup(exception.message)
+                        isTryingToSetup = false,
+                        error = HomeMoviesUiState.Error.ErrorOnSetup(exception.message)
                     )
                 }
             }
@@ -53,11 +50,10 @@ class HomeMoviesPresenter @Inject constructor(
             } catch (exception: ShowtimeException) {
                 render {
                     it.copy(
-                        dialog = HomeMoviesUiState.Dialog.ErrorOnOpeningMovie(
+                        error = HomeMoviesUiState.Error.ErrorOnOpeningMovie(
                             movie,
                             exception.message
-                        ),
-                        error = true
+                        )
                     )
                 }
             }
@@ -65,17 +61,17 @@ class HomeMoviesPresenter @Inject constructor(
     }
 
     fun onRetryLoading() {
-        render { it.copy(isLoading = true, error = false, dialog = null) }
+        render { it.copy(isTryingToSetup = true, error = null) }
         setup()
     }
 
     fun onRetryOpeningMovie(movie: MoviePreview) {
-        render { it.copy(isLoading = false, error = false, dialog = null) }
+        render { it.copy(error = null) }
         loadMovieThenNavigate(movie)
     }
 
-    fun onDialogDisplayed() {
-        render { it.copy(dialog = null) }
+    fun onErrorHandled() {
+        render { it.copy(error = null) }
     }
 
     fun onNavigationHandled() {
