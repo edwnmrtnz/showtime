@@ -11,7 +11,7 @@ class HomeMoviesPresenter @Inject constructor(
     private val movieRepository: MoviesRepository
 ) : StatefulPresenter<HomeMoviesUiState, HomeMoviesView>() {
 
-    override fun initialState(): HomeMoviesUiState = HomeMoviesUiState()
+    override fun initialState(): HomeMoviesUiState = HomeMoviesUiState.DEFAULT
 
     override fun onCreated(state: HomeMoviesUiState) {
         setup()

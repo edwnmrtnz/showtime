@@ -4,10 +4,10 @@ import com.github.edwnmrtnz.showtime.core.MoviePreview
 import com.github.edwnmrtnz.showtime.core.SectionedMovie
 
 data class HomeMoviesUiState(
-    val isTryingToSetup: Boolean = true,
-    val movies: List<SectionedMovie> = listOf(),
-    val error: Error? = null,
-    val navigate: Navigate? = null
+    val isTryingToSetup: Boolean,
+    val movies: List<SectionedMovie>,
+    val error: Error?,
+    val navigate: Navigate?
 ) {
 
     sealed class Error {
@@ -17,5 +17,14 @@ data class HomeMoviesUiState(
 
     sealed class Navigate {
         data class Details(val movie: MoviePreview) : Navigate()
+    }
+
+    companion object {
+        val DEFAULT = HomeMoviesUiState(
+            isTryingToSetup = true,
+            movies = listOf(),
+            error = null,
+            navigate = null
+        )
     }
 }

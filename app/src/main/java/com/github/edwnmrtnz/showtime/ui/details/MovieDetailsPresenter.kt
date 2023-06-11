@@ -14,7 +14,7 @@ class MovieDetailsPresenter @AssistedInject constructor(
 
 ) : StatefulPresenter<MovieDetailsUiState, MovieDetailsView>() {
 
-    override fun initialState(): MovieDetailsUiState = MovieDetailsUiState()
+    override fun initialState(): MovieDetailsUiState = MovieDetailsUiState.DEFAULT
 
     override fun onCreated(state: MovieDetailsUiState) {
         scope.launch {
