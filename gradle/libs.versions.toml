@@ -22,6 +22,8 @@ picasso = "2.8"
 ktlint = "11.3.1"
 detekt = "1.23.0"
 room = "2.5.1"
+shimmer = "0.5.0"
+lottie = "6.0.0"
 
 [libraries]
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
@@ -43,6 +45,9 @@ retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", ve
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 room = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+
 
 edwnmrtnz-scopey = { module = "net.github.amaterasu:scopey", version.ref = "scopey" }
 edwnmrtnz-testing-local = { module = "net.github.amaterasu:localtest", version.ref = "testing-local" }
@@ -51,14 +56,13 @@ edwnmrtnz-android-utils = { module = "net.github.amaterasu:androidutils", versio
 edwnmrtnz-argshandle = { module = "net.github.amaterasu:argshandle", version.ref = "argshandle" }
 
 
-
 [bundles]
 app = ["core-ktx", "appcompat", "material",
     "fragment-ktx", "navigation-ui-ktx",
     "constraintlayout", "gson", "dagger-hilt",
     "dagger-hilt-compiler", "edwnmrtnz-scopey", "retrofit",
     "retrofit-converter-gson", "picasso", "room",
-    "edwnmrtnz-argshandle"
+    "edwnmrtnz-argshandle", "shimmer"
 ]
 testing-local = ["junit", "android-ext-junit", "espresso", "edwnmrtnz-testing-local"]
 testing-instrumented = ["edwnmrtnz-testing-instrumented"]

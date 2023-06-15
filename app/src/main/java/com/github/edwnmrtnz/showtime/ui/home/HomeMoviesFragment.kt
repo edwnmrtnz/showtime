@@ -99,7 +99,12 @@ class HomeMoviesFragment : Fragment(), HomeMoviesView {
         handleErrors(state.error)
 
         adapter.submitList(state.movies) {
-            if (!state.isTryingToSetup) EspressoIdlingResource.decrement()
+            if (!state.isTryingToSetup) {
+                EspressoIdlingResource.decrement()
+                binding.shimmer.shimmer.visibility = View.GONE
+            } else {
+                binding.shimmer.shimmer.visibility = View.VISIBLE
+            }
         }
     }
 
