@@ -32,15 +32,9 @@ android {
 dependencies {
     implementation(libs.bundles.app)
     kapt(libs.bundles.kapt)
-
-    // Local test
     testImplementation(libs.bundles.testing.local)
-
-    // Instrumented test
     androidTestImplementation(libs.bundles.testing.instrumented)
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.5.1"
-    androidTestUtil 'androidx.test:orchestrator:1.4.2'
-    implementation "androidx.test.espresso:espresso-idling-resource:3.5.1"
+
 
 }
 

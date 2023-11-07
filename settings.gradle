@@ -15,7 +15,7 @@ dependencyResolutionManagement {
             url = uri("https://maven.pkg.github.com/edwnmrtnz/amaterasu")
             credentials {
                 username = "edwnmrtnz"
-                password = "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"
+                password = "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"
             }
         }
     }

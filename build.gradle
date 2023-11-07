@@ -1,16 +1,3 @@
-//buildscript {
-//    repositories {
-//        google()
-//        mavenCentral()
-//        gradlePluginPortal()
-//    }
-//
-//    dependencies {
-//        classpath(libs.android.gradle.plugin)
-//        classpath(libs.kotlin.gradle.plugin)
-//    }
-//}
-
 plugins {
     alias(libs.plugins.android.app).apply(false)
     alias(libs.plugins.android.lib).apply(false)
@@ -30,10 +17,10 @@ subprojects {
     afterEvaluate { project ->
         if(!project.hasProperty("android")) return
         android {
-            compileSdk 33
+            compileSdk 34
             defaultConfig {
                 minSdk 24
-                targetSdk 33
+                targetSdk 34
             }
 
             buildTypes {

@@ -1,33 +1,38 @@
 [versions]
-core-ktx = "1.9.0"
+core-ktx = "1.12.0"
 appcompat = "1.6.1"
-material = "1.9.0"
-fragment-ktx = "2.5.3"
-navigation-ui-ktx = "2.5.3"
+material = "1.10.0"
+fragment-ktx = "2.7.5"
+navigation-ui-ktx = "2.7.5"
 junit = "4.13.2"
 android-ext-junit = "1.1.5"
 espresso = "3.5.1"
 constraintlayout = "2.1.4"
-agp = "8.0.1"
+agp = "8.1.2"
 kotlin = "1.8.20"
 gson = "2.10.1"
-dagger-hilt = "2.44"
-scopey = "1.0"
-androidutils = "1.0"
-testing-local = "1.1"
-testing-instrumented = "1.1"
-argshandle = "1.0"
+dagger-hilt = "2.48"
+orchestrator = "1.4.2"
 retrofit = "2.9.0"
 picasso = "2.8"
 ktlint = "11.3.1"
 detekt = "1.23.0"
-room = "2.5.1"
+room = "2.6.0"
 shimmer = "0.5.0"
 lottie = "6.0.0"
+
+# amaterasu
+scopey = "1.0"
+androidutils = "1.0"
+testing-local = "1.0"
+testing-instrumented = "1.0"
+argshandle = "1.0"
 
 [libraries]
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "espresso" }
+espresso-idling-resource = { module = "androidx.test.espresso:espresso-idling-resource", version.ref = "espresso" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "fragment-ktx" }
 navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation-ui-ktx" }
@@ -40,6 +45,7 @@ kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "dagger-hilt" }
 dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "dagger-hilt" }
+orchestrator = { module = "androidx.test:orchestrator", version.ref = "orchestrator" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
@@ -48,24 +54,36 @@ room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 
-
-edwnmrtnz-scopey = { module = "net.github.amaterasu:scopey", version.ref = "scopey" }
-edwnmrtnz-testing-local = { module = "net.github.amaterasu:localtest", version.ref = "testing-local" }
-edwnmrtnz-testing-instrumented = { module = "net.github.amaterasu:instrumentedtest", version.ref = "testing-instrumented" }
-edwnmrtnz-android-utils = { module = "net.github.amaterasu:androidutils", version.ref = "androidutils" }
-edwnmrtnz-argshandle = { module = "net.github.amaterasu:argshandle", version.ref = "argshandle" }
-
+edwnmrtnz-scopey = { module = "com.github.amaterasu:scopey", version.ref = "scopey" }
+edwnmrtnz-testing-local = { module = "com.github.amaterasu:localtest", version.ref = "testing-local" }
+edwnmrtnz-testing-instrumented = { module = "com.github.amaterasu:instrumentedtest", version.ref = "testing-instrumented" }
+edwnmrtnz-android-utils = { module = "com.github.amaterasu:androidutils", version.ref = "androidutils" }
+edwnmrtnz-argshandle = { module = "com.github.amaterasu:argshandle", version.ref = "argshandle" }
 
 [bundles]
+
 app = ["core-ktx", "appcompat", "material",
     "fragment-ktx", "navigation-ui-ktx",
     "constraintlayout", "gson", "dagger-hilt",
     "dagger-hilt-compiler", "edwnmrtnz-scopey", "retrofit",
     "retrofit-converter-gson", "picasso", "room",
-    "edwnmrtnz-argshandle", "shimmer"
+    "edwnmrtnz-argshandle", "shimmer",
+    "espresso-idling-resource"
 ]
-testing-local = ["junit", "android-ext-junit", "espresso", "edwnmrtnz-testing-local"]
-testing-instrumented = ["edwnmrtnz-testing-instrumented"]
+
+testing-local = [
+    "junit",
+    "android-ext-junit",
+    "edwnmrtnz-testing-local"
+]
+
+testing-instrumented = [
+    "edwnmrtnz-testing-instrumented",
+    "espresso-contrib",
+    "espresso",
+    "orchestrator",
+    "android-ext-junit",
+]
 kapt = ["dagger-hilt-compiler", "room-compiler"]
 
 [plugins]
