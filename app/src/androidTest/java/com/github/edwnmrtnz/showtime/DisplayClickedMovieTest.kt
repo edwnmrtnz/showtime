@@ -21,7 +21,8 @@ class DisplayClickedMovieTest {
 
     @Test
     fun shouldDisplayTheCLickedMovie() {
-        HomeMoviesRobot().clickFirstMovie()
+        HomeMoviesRobot()
+            .clickFirstMovie()
         MovieDetailsRobot()
             .shouldHaveThePhoto()
             .shouldHaveTheTitle()
